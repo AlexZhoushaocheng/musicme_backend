@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "id": 1953125353,
+            "url": "http://m801.music.126.net/20220610100222/3834460e147eca7ec20f8cfd443acc46/jdyyaac/obj/w5rDlsOJwrLDjj7CmsOj/14838957681/ef41/d8fc/87aa/3136afb495774ac0d60015af21a468c1.m4a",
+            "br": 96002,
+            "size": 3084177,
+            "md5": "3136afb495774ac0d60015af21a468c1",
+            "code": 200,
+            "expi": 1200,
+            "type": "m4a",
+            "gain": 0.0,
+            "fee": 8,
+            "uf": null,
+            "payed": 0,
+            "flag": 4,
+            "canExtend": false,
+            "freeTrialInfo": null,
+            "level": "standard",
+            "encodeType": "aac",
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "freeTimeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "type": 0,
+                "remainTime": 0
+            },
+            "urlSource": 0
+        }
+    ],
+    "code": 200
+}

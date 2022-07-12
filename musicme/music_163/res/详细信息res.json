@@ -1,0 +1,156 @@
+{
+    "songs": [
+        {
+            "name": "看得最远的地方",
+            "id": 1953125353,
+            "pst": 0,
+            "t": 0,
+            "ar": [
+                {
+                    "id": 12138269,
+                    "name": "毛不易",
+                    "tns": [],
+                    "alias": []
+                }
+            ],
+            "alia": [],
+            "pop": 100.0,
+            "st": 0,
+            "rt": "",
+            "fee": 8,
+            "v": 3,
+            "crbt": null,
+            "cf": "",
+            "al": {
+                "id": 145976397,
+                "name": "月光，背影与海",
+                "picUrl": "https://p2.music.126.net/SrQOymubpzWHHL2XC97Ylw==/109951167508113796.jpg",
+                "tns": [],
+                "pic_str": "109951167508113796",
+                "pic": 109951167508113796
+            },
+            "dt": 252984,
+            "h": {
+                "br": 320000,
+                "fid": 0,
+                "size": 10120365,
+                "vd": -39761.0,
+                "sr": 48000
+            },
+            "m": {
+                "br": 192000,
+                "fid": 0,
+                "size": 6072237,
+                "vd": -37138.0,
+                "sr": 48000
+            },
+            "l": {
+                "br": 128000,
+                "fid": 0,
+                "size": 4048173,
+                "vd": -35407.0,
+                "sr": 48000
+            },
+            "sq": null,
+            "hr": null,
+            "a": null,
+            "cd": "01",
+            "no": 1,
+            "rtUrl": null,
+            "ftype": 0,
+            "rtUrls": [],
+            "djId": 0,
+            "copyright": 0,
+            "s_id": 0,
+            "mark": 8192,
+            "originCoverType": 2,
+            "originSongSimpleData": {
+                "songId": 326942,
+                "name": "看得最远的地方",
+                "artists": [
+                    {
+                        "id": 10562,
+                        "name": "张韶涵"
+                    }
+                ],
+                "albumMeta": {
+                    "id": 32346,
+                    "name": "第5季"
+                }
+            },
+            "tagPicList": null,
+            "resourceState": true,
+            "version": 3,
+            "songJumpInfo": null,
+            "entertainmentTags": null,
+            "single": 0,
+            "noCopyrightRcmd": null,
+            "rtype": 0,
+            "rurl": null,
+            "mst": 9,
+            "cp": 7001,
+            "mv": 0,
+            "publishTime": 0
+        }
+    ],
+    "privileges": [
+        {
+            "id": 1953125353,
+            "fee": 8,
+            "payed": 0,
+            "st": 0,
+            "pl": 128000,
+            "dl": 0,
+            "sp": 7,
+            "cp": 1,
+            "subp": 1,
+            "cs": false,
+            "maxbr": 320000,
+            "fl": 128000,
+            "toast": false,
+            "flag": 4,
+            "preSell": false,
+            "playMaxbr": 320000,
+            "downloadMaxbr": 320000,
+            "maxBrLevel": "exhigh",
+            "playMaxBrLevel": "exhigh",
+            "downloadMaxBrLevel": "exhigh",
+            "plLevel": "standard",
+            "dlLevel": "none",
+            "flLevel": "standard",
+            "rscl": null,
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "chargeInfoList": [
+                {
+                    "rate": 128000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 0
+                },
+                {
+                    "rate": 192000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                },
+                {
+                    "rate": 320000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                },
+                {
+                    "rate": 999000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                }
+            ]
+        }
+    ],
+    "code": 200
+}
