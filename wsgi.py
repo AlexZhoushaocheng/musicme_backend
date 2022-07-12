@@ -1,0 +1,2 @@
+from musicme import app
+

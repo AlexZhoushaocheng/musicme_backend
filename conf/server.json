@@ -1,0 +1,24 @@
+{
+    "httpserver": {
+        "host": "",
+        "port": 8000
+    },
+    "db": {
+        "mariadb": {
+            "host": "",
+            "port": 3306,
+            "user": "root",
+            "password": "admin1234"
+        },
+        "minio": {
+            "host": "",
+            "port": "9000",
+            "user": "admin",
+            "password": "admin1234"
+        }
+    },
+    "tools":{
+        "edge_driver_path":"edgedriver_linux64/msedgedriver",
+        "proxy_server":"browsermob-proxy-2.1.4/bin/browsermob-proxy"
+    }
+}
