@@ -95,7 +95,7 @@ class NetEase:
         finally:
             self.driver_.close()
     
-    def query_song_info(self, song_id:int):
+    def query_song_info(self, song_id:str):
         try:
             wait = WebDriverWait(self.driver_, 5)
 

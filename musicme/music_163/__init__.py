@@ -25,7 +25,7 @@ def init_music163(app:Flask, conf_path):
             db_cli.init_table()
             app.logger.info('init mariadb success.')
         except Exception as ex:
-            app.logger.error('init mariadb failed.')
+            app.logger.error('init mariadb failed.', ex)
             
         # 初始化文件数据
         try:
@@ -33,7 +33,7 @@ def init_music163(app:Flask, conf_path):
             minio_cli.init_bucket()
             app.logger.info('init minio success.')
         except Exception as ex:
-            app.logger.error('init minio failed.')
+            app.logger.error('init minio failed.', ex)
     
         app.teardown_appcontext(close_db)
 

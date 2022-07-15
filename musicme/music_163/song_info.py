@@ -69,9 +69,6 @@ class SongInfo:
             logger.error(ex)
         # url
     
-    def getUrl(self):
-        return self._url
-    
     
     # 歌曲链接[原始信息]
     # _url_detail = ''

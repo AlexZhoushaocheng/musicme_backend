@@ -5,14 +5,14 @@
     },
     "db": {
         "mariadb": {
-            "host": "",
+            "host": "www.litesite.cn",
             "port": 3306,
             "user": "root",
             "password": "admin1234"
         },
         "minio": {
-            "host": "",
-            "port": "9000",
+            "host": "www.litesite.cn",
+            "port": 9000,
             "user": "admin",
             "password": "admin1234"
         }
