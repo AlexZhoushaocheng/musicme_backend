@@ -1,3 +1,4 @@
+from flask import make_response, send_file
 from musicme import app
 from musicme import music_163
 from . import downloader
@@ -25,9 +26,12 @@ def save(song_id):
         data = downloader.download(info.get_url())
         
         music_163.get_dbcli().insert_a_song(info)
+        app.logger.info('保存音乐信息成功')
         
         music_163.get_minio().insert_a_song(info.get_name(), data)
+        app.logger.info('保存音乐数据成功')
     except Exception as ex:
+        app.logger.error(ex)
         return 'internal error', 400
     
     return 'ok', 200
@@ -43,5 +47,10 @@ def download(song_id):
     cli = music_163.get_netEaseClient()
     info = cli.query_song_info(song_id)
     data = downloader.download(info.get_url())
+    # filename = '{}.{}'.format(info.get_name(), info.get_type())
+    res = make_response()
+    res.data = data
+    res.mimetype = 'audio/*'
+    res.headers["Content-Disposition"] = "attachment; filename={}.{}".format(info.get_name().encode().decode('latin-1'), info.get_type())
     
-    return data
+    return res

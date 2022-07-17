@@ -37,6 +37,9 @@ class SongInfo:
     
     def get_lyric(self):
         return self._lyric
+    
+    def get_type(self):
+        return self._type
 
     def __init__(self,url_detail:str, lyric:str, detail:str) -> None:
         self._valid = False
@@ -50,7 +53,8 @@ class SongInfo:
             # 歌曲 url
             ret = json.loads(self._url_detail)
             self._url = ret['data'][0]['url']
-            
+            self._type = ret['data'][0]['type']
+
             # 歌词
             lyric = json.loads(self._lyric)
             self._lyric = lyric['lrc']['lyric']
@@ -63,6 +67,7 @@ class SongInfo:
             self._ar_name = song['ar'][0]['name']
             self._al_name = song['al']['name']
             self._pic_url = song['al']['picUrl']
+           
             self._valid = True
         except Exception as ex:
             logger = logging.getLogger(__name__)
