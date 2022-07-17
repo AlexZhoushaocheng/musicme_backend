@@ -11,8 +11,11 @@ init_table_ = """CREATE TABLE if not exists `musicme`.`{table_name}`  (
   `ar` varchar(255) NULL,
   `al` varchar(255) NULL,
   `lyric` text NULL,
+  `create_date` DATETIME(6) NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` DATETIME(6) NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  INDEX(`origin_id`) USING BTREE
+  INDEX(`origin_id`) USING BTREE,
+  INDEX(`name`) USING BTREE
 );"""
 
 class MusicDbClient:
@@ -45,7 +48,6 @@ class MusicDbClient:
                 info.get_ar_name(),
                 info.get_al_name(),
                 info.get_lyric())
-            logging.info(sql)
             cursor.execute(sql)
             self._conn.commit()
     

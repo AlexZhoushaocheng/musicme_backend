@@ -1,4 +1,4 @@
 SECRET_KEY='dev'
 
-DATABASE='flaskr.sqlite'
+DATABASE_SQLITE='musicme.sqlite'
 
