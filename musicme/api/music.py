@@ -1,8 +1,10 @@
 from flask import make_response, send_file
+import json
 from musicme import app
 from musicme import music_163
+from musicme.music_163.data_store import datastore
 from . import downloader
-
+import uuid
 
 
 @app.route('/hello')
@@ -23,13 +25,14 @@ def save(song_id):
     info = cli.query_song_info(song_id)
 
     try:
+        uid = str(uuid.uuid1(node=1)).replace('-','')
+        # uid_ = '',json(uid.split('-'))
         data = downloader.download(info.get_url())
+        music_163.get_dbcli().insert_a_song(info, uid)
+         app.logger.info('保存音乐信息成功')
         
         music_163.get_dbcli().insert_a_song(info)
-        app.logger.info('保存音乐信息成功')
         
-        music_163.get_minio().insert_a_song(info.get_name(), data)
-        app.logger.info('保存音乐数据成功')
     except Exception as ex:
         app.logger.error(ex)
         return 'internal error', 400
