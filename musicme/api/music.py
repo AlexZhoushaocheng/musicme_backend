@@ -1,7 +1,9 @@
+import json
 from musicme import app
 from musicme import music_163
+from musicme.music_163.data_store import datastore
 from . import downloader
-
+import uuid
 
 
 @app.route('/hello')
@@ -22,11 +24,14 @@ def save(song_id):
     info = cli.query_song_info(song_id)
 
     try:
+        uid = str(uuid.uuid1(node=1)).replace('-','')
+        # uid_ = '',json(uid.split('-'))
         data = downloader.download(info.get_url())
         
-        music_163.get_dbcli().insert_a_song(info)
+        music_163.get_dbcli().insert_a_song(info, uid)
         
-        music_163.get_minio().insert_a_song(info.get_name(), data)
+        music_163.get_minio().insert_a_song(uid, data)
+        
     except Exception as ex:
         return 'internal error', 400
     

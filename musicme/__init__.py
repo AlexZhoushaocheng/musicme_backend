@@ -18,12 +18,12 @@ def create_app():
     
     conf_path = os.path.join(a.instance_path, "../conf/server.json")
     music_163.init_music163(a, conf_path)
-
     return a
 
 
 app = create_app()
 
 
-#
+# 相互引用，保证此行在文件底部，代码格式化时需要注意
 from . import api
+from . import main
