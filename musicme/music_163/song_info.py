@@ -23,6 +23,9 @@ class SongInfo:
     def get_pic_url(self):
         return self._pic_url
     
+    def get_type(self):
+        return self._type
+    
     def get_name(self):
         return self._name
     
@@ -53,8 +56,6 @@ class SongInfo:
             # 歌曲 url
             ret = json.loads(self._url_detail)
             self._url = ret['data'][0]['url']
-            self._type = ret['data'][0]['type']
-
             # 歌词
             lyric = json.loads(self._lyric)
             self._lyric = lyric['lrc']['lyric']
