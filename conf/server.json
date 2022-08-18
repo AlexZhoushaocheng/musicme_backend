@@ -5,20 +5,21 @@
     },
     "db": {
         "mariadb": {
-            "host": "www.litesite.cn",
+            "host": "",
             "port": 3306,
             "user": "root",
-            "password": "admin1234"
+            "password": ""
         },
         "minio": {
-            "host": "www.litesite.cn",
+            "host": "",
             "port": 9000,
             "user": "admin",
-            "password": "admin1234"
+            "password": ""
         }
     },
     "tools":{
         "edge_driver_path":"edgedriver_linux64/msedgedriver",
+        "firefox_driver_path":"geckodriver-v0.31.0-linux64/geckodriver",
         "proxy_server":"browsermob-proxy-2.1.4/bin/browsermob-proxy"
     }
 }

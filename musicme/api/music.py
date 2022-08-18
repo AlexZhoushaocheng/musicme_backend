@@ -29,7 +29,7 @@ def save(song_id):
         # uid_ = '',json(uid.split('-'))
         data = downloader.download(info.get_url())
         music_163.get_dbcli().insert_a_song(info, uid)
-         app.logger.info('保存音乐信息成功')
+        app.logger.info('保存音乐信息成功')
         
         music_163.get_dbcli().insert_a_song(info)
         

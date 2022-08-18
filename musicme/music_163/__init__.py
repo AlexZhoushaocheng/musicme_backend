@@ -66,7 +66,7 @@ def get_netEaseClient():
         proxy_path = os.path.join(
             current_app.instance_path, "../tools", setting_.proxy_path)
         driver_path = os.path.join(
-            current_app.instance_path, "../tools", setting_.driver_path)
+            current_app.instance_path, "../tools", setting_.driver_path_edge)
         print(proxy_path)
         print(driver_path)
         g.proxy = net_ease.ProxyAndDriver(proxy_path, driver_path)
