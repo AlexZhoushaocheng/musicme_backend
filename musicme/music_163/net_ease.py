@@ -67,6 +67,22 @@ class ProxyAndDriver:
         driver = webdriver.Edge(service=driver_service, options=driver_options)    
         return (proxy_cli,driver)  
      
+        
+    def getFirefoxDriver(self):
+        # from selenium.webdriver.firefox.options import Options
+        from selenium.webdriver.firefox import service
+        proxy_cli = self.proxy_server_.create_proxy()
+        driver_options = webdriver.FirefoxOptions()
+        driver_options.add_argument('--ignore-certificate-errors')
+        # driver_options.add_argument('--disable-gpu')
+        # driver_options.add_argument('--headless')
+        driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
+        # driver_options.set_preference()
+        # driver_service = service.Service(self.dirver_path_)
+        driver = webdriver.Firefox(options=driver_options)
+        return (proxy_cli,driver)
+        
+     
     def stop(self):
         self.proxy_server_.stop()
 

@@ -29,8 +29,12 @@ class Setting(dict):
         return self._conf['tools']['proxy_server']
     
     @property
-    def driver_path(self):
+    def driver_path_edge(self):
         return self._conf['tools']['edge_driver_path']
+    
+    @property
+    def driver_path_firefox(self):
+        return self._conf['tools']['firefox_driver_path']
     
     @property
     def nete_login_enable(self)-> bool:
