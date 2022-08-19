@@ -17,6 +17,11 @@
             "password": "admin1234"
         }
     },
+    "netEase":{
+        "enable":true,
+        "username":"",
+        "password":""
+    },
     "tools":{
         "edge_driver_path":"edgedriver_linux64/msedgedriver",
         "proxy_server":"browsermob-proxy-2.1.4/bin/browsermob-proxy"

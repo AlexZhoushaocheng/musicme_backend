@@ -31,3 +31,15 @@ class Setting(dict):
     @property
     def driver_path(self):
         return self._conf['tools']['edge_driver_path']
+    
+    @property
+    def nete_login_enable(self)-> bool:
+        return self._conf['netEase']['enable']
+    
+    @property
+    def nete_username(self)-> bool:
+        return self._conf['netEase']['username']
+    
+    @property
+    def nete_password(self)-> bool:
+        return self._conf['netEase']['password']

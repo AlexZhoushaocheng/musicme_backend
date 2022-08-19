@@ -72,6 +72,8 @@ def get_netEaseClient():
         g.proxy = net_ease.ProxyAndDriver(proxy_path, driver_path)
 
     nete_cli = net_ease.NetEase(*g.proxy.getEdgeDriver())
+    # if(setting_.nete_login_enable):
+    #     nete_cli.login(setting_.nete_username, setting_.nete_password)
     return nete_cli
 
 def close_proxy(e=None):

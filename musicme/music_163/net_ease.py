@@ -1,5 +1,7 @@
 
+from fileinput import filename
 from http import server
+from importlib.resources import path
 from selenium.webdriver.support.wait import WebDriverWait
 from browsermobproxy import Server as ProxyServer
 from browsermobproxy import Client as ProxyClient
@@ -10,6 +12,7 @@ import selenium.webdriver.support.expected_conditions as cond
 import time
 from .song_info import SongInfo
 from enum import IntEnum
+import os.path
 
 obj = {}
 
@@ -35,6 +38,12 @@ class SearchType(IntEnum):
 #     driver = webdriver.Edge(service=driver_service, options=driver_options)    
 #     return driver
 
+def save(filename:str, data):
+    print('write..', data)
+    with open(filename, 'w') as f:
+        f.write(str(data))
+
+
 class ProxyAndDriver:
     def __init__(self, proxy_path:str, dirver_path:str) -> None:
         """proxy_path"""
@@ -48,9 +57,11 @@ class ProxyAndDriver:
 
         proxy_cli = self.proxy_server_.create_proxy()
         driver_options = Options()
+        driver_options.set_capability("ACCEPT_SSL_CERTS", True)
+        driver_options.set_capability("ACCEPT_INSECURE_CERTS", True)
         driver_options.add_argument('--ignore-certificate-errors')
         driver_options.add_argument('--disable-gpu')
-        driver_options.add_argument('--headless')
+        # driver_options.add_argument('--headless')
         driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
         driver_service = service.Service(self.dirver_path_)
         driver = webdriver.Edge(service=driver_service, options=driver_options)    
@@ -66,9 +77,14 @@ class NetEase:
         self.proxy_client_ = cli
         self.driver_ = driver
 
+    def login(self, username:str, password:str):
+        print(username, password)
+        
+    
     def search(self, key:str, type:SearchType = SearchType.BySong):
         
         url = 'https://music.163.com/#/search/m/?s={}&type={}'.format(key, type)
+        print(url)
         # cls.initEnv()
         try:
             wait = WebDriverWait(self.driver_, 5)
@@ -82,6 +98,7 @@ class NetEase:
             wait.until(cond.frame_to_be_available_and_switch_to_it(
                 (By.ID, "g_iframe")), '切换frame失败')
             
+            # time.sleep(2)
             result_ = self.proxy_client_.har
             
             for entry in result_['log']['entries']:
@@ -89,6 +106,7 @@ class NetEase:
                 response = entry['response']
                 req_url:str = request['url']
                 if req_url.endswith('web?csrf_token='):
+                    save("result.json", response)
                     songs = response['content']['text']
                     return songs
             return None
