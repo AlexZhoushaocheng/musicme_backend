@@ -66,12 +66,12 @@ def get_netEaseClient():
         proxy_path = os.path.join(
             current_app.instance_path, "../tools", setting_.proxy_path)
         driver_path = os.path.join(
-            current_app.instance_path, "../tools", setting_.driver_path_edge)
+            current_app.instance_path, "../tools", setting_.driver_path_chrome)
         print(proxy_path)
         print(driver_path)
         g.proxy = net_ease.ProxyAndDriver(proxy_path, driver_path)
 
-    nete_cli = net_ease.NetEase(*g.proxy.getEdgeDriver())
+    nete_cli = net_ease.NetEase(*g.proxy.getChromeDriver())
     # if(setting_.nete_login_enable):
     #     nete_cli.login(setting_.nete_username, setting_.nete_password)
     return nete_cli

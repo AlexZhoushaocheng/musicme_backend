@@ -2,6 +2,7 @@
 from fileinput import filename
 from http import server
 from importlib.resources import path
+import json
 from selenium.webdriver.support.wait import WebDriverWait
 from browsermobproxy import Server as ProxyServer
 from browsermobproxy import Client as ProxyClient
@@ -78,10 +79,19 @@ class ProxyAndDriver:
         # driver_options.add_argument('--headless')
         driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
         # driver_options.set_preference()
-        # driver_service = service.Service(self.dirver_path_)
-        driver = webdriver.Firefox(options=driver_options)
+        driver_service = service.Service(self.dirver_path_)
+        driver = webdriver.Firefox(options=driver_options, service=driver_service)
         return (proxy_cli,driver)
-        
+    
+    def getChromeDriver(self):
+        from selenium.webdriver.chrome import service
+        proxy_cli = self.proxy_server_.create_proxy()
+        driver_options = webdriver.ChromeOptions()
+        driver_options.add_argument('--ignore-certificate-errors')
+        driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
+        driver_service = service.Service(self.dirver_path_)
+        driver = webdriver.Chrome(options=driver_options, service=driver_service)
+        return (proxy_cli,driver)
      
     def stop(self):
         self.proxy_server_.stop()
@@ -116,13 +126,13 @@ class NetEase:
             
             # time.sleep(2)
             result_ = self.proxy_client_.har
-            
+            save("result.json", json.dumps(result_))
             for entry in result_['log']['entries']:
                 request = entry['request']
                 response = entry['response']
                 req_url:str = request['url']
                 if req_url.endswith('web?csrf_token='):
-                    save("result.json", response)
+                    
                     songs = response['content']['text']
                     return songs
             return None

@@ -17,3 +17,6 @@ export FLASK_ENV=development
 * 浏览器驱动：
     1. chrome测试可用，但是浏览器和驱动的版本有较严格的对应关系，浏览器升级后驱动可能无效。
     2. edge浏览器可用，默认使用此项。部署新的环境时需要安装此浏览器。
+
+## 驱动
+chromedriver镜像站:[https://registry.npmmirror.com/binary.html?path=chromedriver/](https://registry.npmmirror.com/binary.html?path=chromedriver/)

@@ -37,6 +37,10 @@ class Setting(dict):
         return self._conf['tools']['firefox_driver_path']
     
     @property
+    def driver_path_chrome(self):
+        return self._conf['tools']['chrome_driver_path']
+    
+    @property
     def nete_login_enable(self)-> bool:
         return self._conf['netEase']['enable']
     

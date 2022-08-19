@@ -25,6 +25,7 @@
     "tools":{
         "edge_driver_path":"edgedriver_linux64/msedgedriver",
         "firefox_driver_path":"geckodriver-v0.31.0-linux64/geckodriver",
+        "chrome_driver_path":"chromedriver_linux64/chromedriver",
         "proxy_server":"browsermob-proxy-2.1.4/bin/browsermob-proxy"
     }
 }
