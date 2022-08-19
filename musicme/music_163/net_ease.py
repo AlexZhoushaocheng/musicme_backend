@@ -40,7 +40,6 @@ class SearchType(IntEnum):
 #     return driver
 
 def save(filename:str, data):
-    print('write..', data)
     with open(filename, 'w') as f:
         f.write(str(data))
 
@@ -62,7 +61,7 @@ class ProxyAndDriver:
         driver_options.set_capability("ACCEPT_INSECURE_CERTS", True)
         driver_options.add_argument('--ignore-certificate-errors')
         driver_options.add_argument('--disable-gpu')
-        # driver_options.add_argument('--headless')
+        driver_options.add_argument('--headless')
         driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
         driver_service = service.Service(self.dirver_path_)
         driver = webdriver.Edge(service=driver_service, options=driver_options)    
@@ -74,9 +73,10 @@ class ProxyAndDriver:
         from selenium.webdriver.firefox import service
         proxy_cli = self.proxy_server_.create_proxy()
         driver_options = webdriver.FirefoxOptions()
+
         driver_options.add_argument('--ignore-certificate-errors')
         # driver_options.add_argument('--disable-gpu')
-        # driver_options.add_argument('--headless')
+        driver_options.add_argument('--headless')
         driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
         # driver_options.set_preference()
         driver_service = service.Service(self.dirver_path_)
@@ -87,10 +87,21 @@ class ProxyAndDriver:
         from selenium.webdriver.chrome import service
         proxy_cli = self.proxy_server_.create_proxy()
         driver_options = webdriver.ChromeOptions()
+        # 防止被检测
+        driver_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        driver_options.add_experimental_option('useAutomationExtension', False)
+        
+        driver_options.add_argument('--disable-gpu')
+        driver_options.add_argument('--headless')
+        driver_options.add_argument("--ssl-version-max")
         driver_options.add_argument('--ignore-certificate-errors')
         driver_options.add_argument('--proxy-server={0}'.format(proxy_cli.proxy))
+        
+        # 添加另一个头
+        driver_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36")
         driver_service = service.Service(self.dirver_path_)
         driver = webdriver.Chrome(options=driver_options, service=driver_service)
+        driver.capabilities['acceptSslCerts']= True
         return (proxy_cli,driver)
      
     def stop(self):
@@ -124,7 +135,7 @@ class NetEase:
             wait.until(cond.frame_to_be_available_and_switch_to_it(
                 (By.ID, "g_iframe")), '切换frame失败')
             
-            # time.sleep(2)
+            # time.sleep(300)
             result_ = self.proxy_client_.har
             save("result.json", json.dumps(result_))
             for entry in result_['log']['entries']:
